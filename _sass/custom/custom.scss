@@ -18,10 +18,10 @@ $labs64-link: #7B2A10;
 
 // Decoration for code snippet headers. To be used together with .code-example
 .code-header {
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-    padding-top: 0.25rem;
-    background-color: darkgray;
+    margin-bottom: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    padding-top: 0.25rem !important;
+    background-color: lightgray;
     color: black;
 }
 
