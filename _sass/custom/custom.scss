@@ -16,6 +16,15 @@
 $labs64-main: #E14817;
 $labs64-link: #7B2A10;
 
+// Decoration for code snippet headers. To be used together with .code-example
+.code-header {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.25rem;
+    background-color: darkgray;
+    color: black;
+}
+
 //$white: #fff;
 
 //$grey-dk-000: #959396;
