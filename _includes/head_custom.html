@@ -1,3 +1,4 @@
+<!-- Open Graph extension -->
 <meta property="og:type" content="wiki">
 
 <!-- imageMapResizer -->
@@ -6,3 +7,16 @@
 <!-- lightbox -->
 <link href="{{ '/assets/3pp/lightbox/css/lightbox.css' | absolute_url }}" rel="stylesheet" />
 <script type="text/javascript" src="{{ '/assets/3pp/lightbox/js/lightbox-plus-jquery.js' | absolute_url }}"></script>
+
+<!-- default canonical url -->
+{% if page.canonical %}
+  {% if page.canonical contains 'http' %}
+    {% assign canonical = page.canonical %}
+  {% else %}
+    {% assign canonical = page.canonical | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
+  {% endif %}
+  <link rel="canonical" href="{{ canonical }}">
+{% else %}
+  {% assign canonical = page.url | prepend: site.baseurl | prepend: site.url %}
+  <link rel="canonical" href="{{ canonical }}">
+{% endif %}
