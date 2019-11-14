@@ -13,10 +13,10 @@
   {% if page.canonical contains 'http' %}
     {% assign canonical = page.canonical %}
   {% else %}
-    {% assign canonical = page.canonical | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
+    {% assign canonical = page.canonical | remove_first:'/' | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
   {% endif %}
   <link rel="canonical" href="{{ canonical }}">
 {% else %}
-  {% assign canonical = page.url | prepend: site.baseurl | prepend: site.url %}
+  {% assign canonical = page.url | remove_first:'/' | prepend: site.baseurl | prepend: site.url %}
   <link rel="canonical" href="{{ canonical }}">
 {% endif %}
