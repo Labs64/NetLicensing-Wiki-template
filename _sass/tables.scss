@@ -16,7 +16,7 @@
 table {
   display: table;
   min-width: 100%;
-  border-collapse: separate;
+  border-collapse: collapse;
 }
 
 th,
@@ -31,9 +31,9 @@ td {
   border-bottom: $border rgba($border-color, 0.5);
   border-left: $border $border-color;
 
-  &:first-of-type {
-    border-left: 0;
-  }
+//  &:first-of-type {
+//    border-left: 0;
+//  }
 }
 
 tbody {
