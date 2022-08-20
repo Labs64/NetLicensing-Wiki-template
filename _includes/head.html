@@ -14,16 +14,21 @@
 
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs.css' | absolute_url }}">
 
+  <!-- Begin Cookie Consent plugin -->
+  <link rel="stylesheet" href="{{ '/assets/css/cookieconsent.2.8.5.css' | absolute_url }}">
+  <script defer src="{{ '/assets/js/vendor/cookieconsent.2.8.5.js' | absolute_url }}"></script>
+  <script defer src="{{ '/assets/js/vendor/cookieconsent-init.js' | absolute_url }}"></script>
+  <!-- End Cookie Consent plugin -->
+
   {% if site.ga_tracking != nil %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
-    <script>
+    <script type="text/plain" async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}" data-cookiecategory="analytics"></script>
+    <script type="text/plain" data-cookiecategory="analytics">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', '{{ site.ga_tracking }}'{% if site.ga_tracking_anonymize_ip %}, { 'anonymize_ip': true }{% endif %});
     </script>
-
   {% endif %}
 
   {% if site.search_enabled != false %}
