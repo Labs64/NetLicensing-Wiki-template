@@ -139,3 +139,58 @@ $link-color: $labs64-link;
 //lg: $content-width + $nav-width,
 //xl: 1400px
 //);
+
+////
+//// Accessibility
+////
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: $labs64-link;
+  transform: translateY(-100%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+////
+//// Print: content only, no navigation chrome
+////
+
+@media print {
+  .side-bar,
+  .search,
+  .aux-nav,
+  .page-header,
+  .skip-link,
+  .anchor-heading,
+  .cc-window {
+    display: none !important;
+  }
+
+  .main-content-wrap {
+    margin-left: 0 !important;
+  }
+
+  .main-content {
+    max-width: none !important;
+  }
+
+  .page-content [href^="http"]::after {
+    font-size: 0.8em;
+    word-break: break-all;
+    content: " (" attr(href) ")";
+  }
+
+  .highlighter-rouge,
+  .table-wrapper,
+  .imagelink {
+    page-break-inside: avoid;
+  }
+}

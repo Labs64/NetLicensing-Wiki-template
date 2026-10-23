@@ -13,6 +13,11 @@
   <link rel="shortcut icon" href="{{ 'favicon.ico' | absolute_url }}" type="image/x-icon">
 
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs.css' | absolute_url }}">
+  {% unless site.color_scheme == "dark" %}
+  <!-- dark palette, downloaded and applied only when the OS prefers dark -->
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="{{ '/assets/css/dark-mode-preview.css' | absolute_url }}" media="(prefers-color-scheme: dark)">
+  {% endunless %}
 
   <!-- Begin Cookie Consent plugin -->
   <link rel="stylesheet" href="{{ '/assets/css/cookieconsent.2.8.5.css' | absolute_url }}">
