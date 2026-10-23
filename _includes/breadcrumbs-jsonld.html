@@ -1,0 +1,22 @@
+{%- if page.parent -%}
+{%- assign crumb1 = site.pages | where: "title", page.parent | first -%}
+{%- if page.grand_parent -%}{%- assign crumb0 = site.pages | where: "title", page.grand_parent | first -%}{%- endif -%}
+{%- if crumb1 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": {{ site.title | jsonify }}, "item": {{ site.url | append: site.baseurl | append: "/" | jsonify }} },
+    {%- assign pos = 2 -%}
+    {%- if crumb0 %}
+    { "@type": "ListItem", "position": {{ pos }}, "name": {{ crumb0.title | jsonify }}, "item": {{ crumb0.url | absolute_url | jsonify }} },
+    {%- assign pos = pos | plus: 1 -%}
+    {%- endif %}
+    { "@type": "ListItem", "position": {{ pos }}, "name": {{ crumb1.title | jsonify }}, "item": {{ crumb1.url | absolute_url | jsonify }} },
+    { "@type": "ListItem", "position": {{ pos | plus: 1 }}, "name": {{ page.title | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+  ]
+}
+</script>
+{%- endif -%}
+{%- endif -%}
