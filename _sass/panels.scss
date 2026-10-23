@@ -1,30 +1,30 @@
 .alert {
-    padding: 15px;
-    margin-bottom: 27px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 27px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 .alert-warning {
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-    color: #8a6d3b;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
 }
 
 .alert-danger {
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    color: #a94442;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }
 
 .alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #3c763d;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
 }
 
 .alert-info {
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-    color: #31708f;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
 }
