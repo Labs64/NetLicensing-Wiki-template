@@ -3,7 +3,8 @@
     {%- assign pages_list = site.html_pages | sort:"nav_order" -%}
     {%- for node in pages_list -%}
       {%- unless node.nav_exclude -%}
-        {%- if node.parent == nil -%}
+        {%- comment -%} pages without a title (e.g. redirect stubs from jekyll-redirect-from) must not become empty menu items {%- endcomment -%}
+        {%- if node.parent == nil and node.title -%}
           <li class="navigation-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
             {%- if page.parent == node.title or page.grand_parent == node.title -%}
               {%- assign first_level_url = node.url | absolute_url -%}
