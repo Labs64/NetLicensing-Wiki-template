@@ -7,7 +7,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": {{ site.title | jsonify }}, "item": {{ site.url | append: site.baseurl | append: "/" | jsonify }} },
+    { "@type": "ListItem", "position": 1, "name": {{ site.title | jsonify }}, "item": {{ "/" | absolute_url | jsonify }} },
     {%- assign pos = 2 -%}
     {%- if crumb0 %}
     { "@type": "ListItem", "position": {{ pos }}, "name": {{ crumb0.title | jsonify }}, "item": {{ crumb0.url | absolute_url | jsonify }} },

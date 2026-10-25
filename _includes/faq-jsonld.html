@@ -1,0 +1,30 @@
+{%- comment -%}
+  FAQPage structured data for question/answer pages (front matter `faq: true`, or any child of the FAQ section).
+  The question is the page title; the answer is the visible text after the "Answer" heading, or the whole page when there is none.
+{%- endcomment -%}
+{%- assign faq_page = page.faq -%}
+{%- if faq_page == nil and site.faq_parent and page.parent == site.faq_parent -%}{%- assign faq_page = true -%}{%- endif -%}
+{%- if faq_page == true and page.title -%}
+{%- assign faq_parts = content | split: '<h2 id="answer">' -%}
+{%- if faq_parts.size > 1 -%}
+  {%- assign faq_answer = faq_parts | last | remove_first: 'Answer</h2>' -%}
+{%- else -%}
+  {%- assign faq_answer = content -%}
+{%- endif -%}
+{%- assign faq_answer = faq_answer | strip_html | normalize_whitespace | truncatewords: 120 -%}
+{%- if faq_answer != "" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": {{ page.title | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ faq_answer | jsonify }}, "url": {{ page.url | absolute_url | jsonify }} }
+    }
+  ]
+}
+</script>
+{%- endif -%}
+{%- endif -%}

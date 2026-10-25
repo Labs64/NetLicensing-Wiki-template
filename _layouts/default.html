@@ -75,6 +75,13 @@ layout: table_wrappers
               {{ content }}
             {% endif %}
 
+          {%- unless page.url == "/" or page.layout == "home" or page.nav_exclude -%}
+            <p class="page-meta text-small text-grey-dk-000 mt-6">
+              {%- if page.last_modified_at -%}Last updated <time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}">{{ page.last_modified_at | date: '%B %-d, %Y' }}</time> · {% endif -%}
+              <a href="{{ site.github.repository_url }}/blob/{{ site.github.source.branch }}{{ site.github.source.path }}/{{ page.path }}">Edit this page on GitHub</a>
+            </p>
+          {%- endunless %}
+
           {% if page.has_children == true and page.has_toc != false %}
             <hr>
             <h2 class="text-delta">Table of contents</h2>

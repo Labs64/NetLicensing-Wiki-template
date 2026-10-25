@@ -1,0 +1,29 @@
+{%- comment -%}
+  Organization and SoftwareApplication structured data on the home page, from `site.organization` and `site.software` in _config.yml.
+{%- endcomment -%}
+{%- if page.url == "/" and site.organization -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ site.organization.url | append: "/#organization" | jsonify }},
+      "name": {{ site.organization.name | jsonify }},
+      "url": {{ site.organization.url | jsonify }}{% if site.organization.logo %},
+      "logo": {{ site.organization.logo | absolute_url | jsonify }}{% endif %}{% if site.social.links %},
+      "sameAs": {{ site.social.links | jsonify }}{% endif %}
+    }{% if site.software %},
+    {
+      "@type": "SoftwareApplication",
+      "name": {{ site.software.name | jsonify }},
+      "url": {{ site.software.url | jsonify }},
+      "description": {{ site.software.description | jsonify }},
+      "applicationCategory": {{ site.software.category | default: "BusinessApplication" | jsonify }},
+      "operatingSystem": {{ site.software.operating_system | default: "Any" | jsonify }},
+      "publisher": { "@id": {{ site.organization.url | append: "/#organization" | jsonify }} }
+    }{% endif %}
+  ]
+}
+</script>
+{%- endif -%}
